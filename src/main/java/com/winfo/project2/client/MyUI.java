@@ -26,16 +26,16 @@ public class MyUI extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         final VerticalLayout layout = new VerticalLayout();
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        final TextField importurl = new TextField();
+        importurl.setCaption("URL einfügen:");
 
-        Button button = new Button("Click Me");
+        Button button = new Button("Importieren");
         button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+            layout.addComponent(new Label(importurl.getValue()
+                  ));
         });
         
-        layout.addComponents(name, button);
+        layout.addComponents(importurl, button);
         
         setContent(layout);
     }
