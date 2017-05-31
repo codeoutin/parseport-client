@@ -11,15 +11,17 @@ import org.json.JSONArray;
  */
 public class ServerConnector{
 
-    ServerConnector()
-    {
+    private String resourceUrl;
 
+    ServerConnector(String resourceUrl)
+    {
+        this.resourceUrl = resourceUrl;
     }
 
-    public JSONArray getResponse(String resourceUrl) {
+    public JSONArray getResponse(String path) {
         try {
             Client client = Client.create();
-            WebResource webResource2 = client.resource(resourceUrl);
+            WebResource webResource2 = client.resource(resourceUrl + path);
             ClientResponse response2 = webResource2.accept("application/json").get(ClientResponse.class);
             if (response2.getStatus() != 200) {
                 throw new RuntimeException("Failed : HTTP error code : " + response2.getStatus());
@@ -34,26 +36,31 @@ public class ServerConnector{
         return null;
     }
 
-    public void postJSON(String input, String resourceUrl) {
+    public void postJSON(String path, String input) {
         try {
             Client client = Client.create();
 
-            WebResource webResource = client.resource(resourceUrl);
+            WebResource webResource = client.resource(resourceUrl + path);
 
             // POST method
             ClientResponse response = webResource.accept("application/json")
                     .type("application/json").post(ClientResponse.class, input);
 
-            // check response status code
-            if (response.getStatus() != 200) {
-                throw new RuntimeException("Failed : HTTP error code : "
-                        + response.getStatus());
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-            // display response
-            String output = response.getEntity(String.class);
-            System.out.println("Output from Server .... ");
-            System.out.println(output + "\n");
+    public void deleteEntityByEid(String path, String eId) {
+        try {
+            Client client = Client.create();
+
+            WebResource webResource = client.resource(resourceUrl + path + "/" + eId);
+
+            // Delete method
+            ClientResponse response = webResource.accept("application/json")
+                    .type("application/json").delete(ClientResponse.class);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

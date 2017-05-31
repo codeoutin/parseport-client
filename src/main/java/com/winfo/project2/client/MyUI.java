@@ -11,6 +11,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.*;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.renderers.ButtonRenderer;
 
 import java.util.*;
 
@@ -26,18 +27,25 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        ServerConnector server = new ServerConnector();
+        ServerConnector server = new ServerConnector("http://localhost:8090");
         final VerticalLayout layout = new VerticalLayout();
         
         //read json through serverconnector into a Entity Object Array
         Gson gson = new Gson();
-        String jsonObject = server.getResponse("http://localhost:8090/entities").toString();
+        String jsonObject = server.getResponse("/entities").toString();
         Entity entities[] = gson.fromJson(jsonObject, Entity[].class);
         List<Entity> entityList = new ArrayList(Arrays.asList(entities));
 
         //create a table (grid) with Entities
         Grid<Entity> grid = new Grid<>(Entity.class);
         grid.setItems(entityList);
+        //add delete button(s)
+        grid.addColumn(entity -> "Delete",
+                new ButtonRenderer<>(clickEvent -> {
+                    server.deleteEntityByEid("/entities", clickEvent.getItem().getEid());
+                    entityList.remove(clickEvent.getItem());
+                    grid.setItems(entityList);
+                }));
         grid.setWidth("100%");
 
         //input form
@@ -73,14 +81,15 @@ public class MyUI extends UI {
             //create new entity object
             Entity en = new Entity(datasource.getValue(), backlink.getValue(), classification.getValue(), Integer.valueOf(loadedAt.getValue()), completeText.getValue());
             //show notification
-            Notification.show("Data saved",
-                    "Input saved locally (not in the database!)",
-                    Notification.Type.WARNING_MESSAGE);
+//            Notification.show("Data saved",
+//                    "Input saved in datebase!",
+//                    Notification.Type.HUMANIZED_MESSAGE);
             //create json out of new object
             String newEntityJson = gson.toJson(en);
             //post json through serverconnector
-            server.postJSON(newEntityJson, "http://localhost:8090/entities");
-            //refresh page (remove if possible!!)
+            server.postJSON("/entities", newEntityJson);
+
+            //refresh page (remove if possible!!) > refresh grid like above at the delete method > problem: form is still filled with data!
             Page.getCurrent().reload();
         });
 
