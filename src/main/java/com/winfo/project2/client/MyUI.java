@@ -2,15 +2,17 @@ package com.winfo.project2.client;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.google.gson.*;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.FontAwesome;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Label;
-import com.vaadin.ui.TextField;
+import com.vaadin.ui.*;
 import com.vaadin.ui.UI;
-import com.vaadin.ui.VerticalLayout;
+
+import java.util.*;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window 
@@ -24,18 +26,68 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
+        ServerConnector server = new ServerConnector();
         final VerticalLayout layout = new VerticalLayout();
         
-        final TextField name = new TextField();
-        name.setCaption("Type your name here:");
+        //read json through serverconnector into a Entity Object Array
+        Gson gson = new Gson();
+        String jsonObject = server.getResponse("http://localhost:8090/entities").toString();
+        Entity entities[] = gson.fromJson(jsonObject, Entity[].class);
+        List<Entity> entityList = new ArrayList(Arrays.asList(entities));
 
-        Button button = new Button("Click Me");
+        //create a table (grid) with Entities
+        Grid<Entity> grid = new Grid<>(Entity.class);
+        grid.setItems(entityList);
+        grid.setWidth("100%");
+
+        //input form
+        FormLayout form = new FormLayout();
+        TextField loadedAt = new TextField("Loaded at");
+
+        loadedAt.setValue("0");
+        loadedAt.setRequiredIndicatorVisible(true);
+        loadedAt.setIcon(FontAwesome.CLOCK_O);
+
+        TextField datasource = new TextField("Datasource");
+        datasource.setIcon(FontAwesome.DATABASE);
+        datasource.setRequiredIndicatorVisible(true);
+
+        TextField backlink = new TextField("Backlink");
+        backlink.setIcon(FontAwesome.EXTERNAL_LINK);
+        backlink.setRequiredIndicatorVisible(true);
+
+        TextField classification = new TextField("Classification");
+        classification.setIcon(FontAwesome.SITEMAP);
+        classification.setRequiredIndicatorVisible(true);
+
+        TextField completeText = new TextField("Complete Text");
+        completeText.setIcon(FontAwesome.FILE_TEXT);
+        completeText.setRequiredIndicatorVisible(true);
+
+        form.addComponents(datasource, backlink, classification, completeText, loadedAt);
+
+        Button button = new Button("Save me");
+        form.addComponent(button);
+        //Button click
         button.addClickListener( e -> {
-            layout.addComponent(new Label("Thanks " + name.getValue() 
-                    + ", it works!"));
+            //create new entity object
+            Entity en = new Entity(datasource.getValue(), backlink.getValue(), classification.getValue(), Integer.valueOf(loadedAt.getValue()), completeText.getValue());
+            //show notification
+            Notification.show("Data saved",
+                    "Input saved locally (not in the database!)",
+                    Notification.Type.WARNING_MESSAGE);
+            //create json out of new object
+            String newEntityJson = gson.toJson(en);
+            //post json through serverconnector
+            server.postJSON(newEntityJson, "http://localhost:8090/entities");
+            //refresh page (remove if possible!!)
+            Page.getCurrent().reload();
         });
+
+        layout.addComponent(form);
+
         
-        layout.addComponents(name, button);
+        layout.addComponents(grid);
         
         setContent(layout);
     }
