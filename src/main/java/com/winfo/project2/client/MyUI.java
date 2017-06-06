@@ -27,7 +27,7 @@ public class MyUI extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        ServerConnector server = new ServerConnector("http://localhost:8090");
+        ServerConnector server = new ServerConnector("http://193.196.143.149:9090");
         final VerticalLayout layout = new VerticalLayout();
         
         //read json through serverconnector into a Entity Object Array
