@@ -90,5 +90,32 @@ public class Entity {
         this.completeText = completeText;
     }
 
+    public void addSourceProperty(Property property){
+        this.sourceProperties.add(property);
+    }
 
+    public void addSyntheticProperty(Property property){
+        this.syntheticProperties.add(property);
+    }
+
+    public List<Property> getProperties(){
+        List<Property> combined = new ArrayList<>();
+        combined.addAll(this.sourceProperties);
+        combined.addAll(this.syntheticProperties);
+        return combined;
+    }
+
+    @Override
+    public String toString() {
+        return "Entity{" +
+                "eid='" + eid + '\'' +
+                ", datasource='" + datasource + '\'' +
+                ", backlink='" + backlink + '\'' +
+                ", classification='" + classification + '\'' +
+                ", loadedAt=" + loadedAt +
+                ", completeText='" + completeText + '\'' +
+                ", sourceProperties=" + sourceProperties +
+                ", syntheticProperties=" + syntheticProperties +
+                '}';
+    }
 }

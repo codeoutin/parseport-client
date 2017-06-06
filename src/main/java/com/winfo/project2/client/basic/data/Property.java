@@ -17,4 +17,25 @@ public class Property {
         this.type = type;
         this.values = values;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public List<String> getValues() {
+        return values;
+    }
+
+    @Override
+    public String toString() {
+        return "Property{" +
+                "name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", values=" + values +
+                '}';
+    }
 }
