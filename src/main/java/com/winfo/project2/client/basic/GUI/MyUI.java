@@ -2,6 +2,8 @@ package com.winfo.project2.client.basic.GUI;
 
 import javax.servlet.annotation.WebServlet;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
@@ -11,7 +13,7 @@ import com.vaadin.ui.*;
 import com.vaadin.ui.UI;
 import com.winfo.project2.client.plugins.WebsiteParser;
 
-import java.io.IOException;
+
 
 /**
  * This GUI is the application entry point. A GUI may either represent a browser window
@@ -30,19 +32,14 @@ public class MyUI extends UI {
         final TextField importurl = new TextField();
         importurl.setCaption("URL einfügen:");
 
-        TextArea area = new TextArea("Parsed Website");
+        TextArea area = new TextArea("preview parsed website");
         area.setWidth("100%");
         area.setHeight("600px");
 
-        Button button = new Button("Importieren");
+        Button button = new Button("parse");
         Registration registration = button.addClickListener(e -> {
-            WebsiteParser websiteToParse = new WebsiteParser();
-
-            try {
-                area.setValue(websiteToParse);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            WebsiteParser websiteParser = new WebsiteParser(importurl.getValue());
+            area.setValue(objectToJson(websiteParser.parse()));
 
         });
 
@@ -54,5 +51,16 @@ public class MyUI extends UI {
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
     @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
     public static class MyUIServlet extends VaadinServlet {
+    }
+
+    private String objectToJson(Object object){
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+            return jsonInString;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 }
