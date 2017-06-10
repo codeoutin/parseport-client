@@ -44,7 +44,7 @@ public class MyUI extends UI {
         });
 
         layout.addComponents(importurl, button, area );
-        
+
         setContent(layout);
     }
 
