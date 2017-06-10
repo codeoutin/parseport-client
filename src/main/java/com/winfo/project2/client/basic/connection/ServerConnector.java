@@ -1,4 +1,4 @@
-package com.winfo.project2.client;
+package com.winfo.project2.client.basic.connection;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
