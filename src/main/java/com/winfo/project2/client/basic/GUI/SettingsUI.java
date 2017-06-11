@@ -33,8 +33,8 @@ public class SettingsUI extends VerticalLayout {
     protected Button uploadsButton;
     protected Button settingsButton;
     protected VerticalLayout mainContentLayout;
-    protected Label iPLabel;
-    protected TextField iPTextfield;
+    protected Label ipLabel;
+    protected TextField ipTextfield;
     protected Label portLabel;
     protected TextField portTextfield;
     protected Button safeButton;
