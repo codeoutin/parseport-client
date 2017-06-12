@@ -4,9 +4,11 @@ import javax.servlet.annotation.WebServlet;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import com.winfo.project2.client.basic.data.ApplicationPreference;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window
@@ -27,6 +29,10 @@ public class ClientUI extends UI {
         final UploadUI uploadUI = new UploadUI();
         final ImpressumUI impressumUI = new ImpressumUI();
 
+        /*if(!ap.getPreference("ipadress").equals("") || !ap.getPreference("port").equals("") ) {
+            settingsUI.ipTextfield.setValue(ap.getPreference("ipaddress"));
+            settingsUI.portTextfield.setValue(ap.getPreference("port"));
+        }*/
 
         //Click Listener for navigation between the pages
         mainUI.homepageButton.addClickListener(e -> {
@@ -117,7 +123,7 @@ public class ClientUI extends UI {
             setContent(contactUI);
         });
 
-        settingsUI.uploadButton.addClickListener(e -> {
+        settingsUI.uploadsButton.addClickListener(e -> {
             setContent(uploadUI);
         });
 
@@ -127,6 +133,8 @@ public class ClientUI extends UI {
 
         settingsUI.safeButton.addClickListener(e -> {
             settingsUI.safeLabel.setVisible(true);
+            ApplicationPreference.setPreference("ipaddress", settingsUI.ipTextfield.getValue());
+            ApplicationPreference.setPreference("port", settingsUI.portTextfield.getValue());
         });
 
         contactUI.homepageButton.addClickListener(e -> {
