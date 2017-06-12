@@ -10,9 +10,7 @@
    <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
     <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
      <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
-      <vaadin-label style-name="logo" plain-text _id="parsePortLabel">
-        ParsePort 
-      </vaadin-label>
+      <vaadin-image source="C:/Users/Thomas/Dropbox/Projekt SoSe17/User Interface/Logoentwürfe/ParsePortLogo.png" width="203px" height="100px" alt="" _id="parsePortLogo"></vaadin-image>
       <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
         Menu 
       </vaadin-button>
@@ -33,7 +31,7 @@
          About 
        </vaadin-button>
        <vaadin-button icon="fonticon://Vaadin-Icons/e6e1" plain-text _id="uploadsButton">
-         Uploads 
+         Show 
        </vaadin-button>
        <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
          Settings 
@@ -42,8 +40,8 @@
      </vaadin-horizontal-layout>
      <vaadin-vertical-layout size-full _id="mainContentLayout" :expand>
       <vaadin-horizontal-layout>
-       <vaadin-label plain-text _id="ipLabel">
-         IP Adress: 
+       <vaadin-label caption-as-html plain-text _id="ipLabel">
+         IP Address: 
        </vaadin-label>
        <vaadin-text-field _id="ipTextfield"></vaadin-text-field>
       </vaadin-horizontal-layout>
@@ -55,18 +53,15 @@
       </vaadin-horizontal-layout>
      </vaadin-vertical-layout>
      <vaadin-horizontal-layout margin>
-      <vaadin-button _id="safeButton">
+      <vaadin-button _id="saveButton">
         Save 
       </vaadin-button>
-      <vaadin-label caption-as-html visible="false" caption="Safed successfully." plain-text _id="safeLabel"></vaadin-label>
+      <vaadin-label caption-as-html visible="false" caption="Saved successfully." plain-text _id="saveLabel"></vaadin-label>
      </vaadin-horizontal-layout>
      <vaadin-horizontal-layout _id="footerlayout" :middle :right>
       <vaadin-css-layout :middle :right>
        <vaadin-button plain-text _id="contactButton">
          Contact 
-       </vaadin-button>
-       <vaadin-button plain-text _id="impressumButton">
-         Impressum 
        </vaadin-button>
       </vaadin-css-layout>
      </vaadin-horizontal-layout>
