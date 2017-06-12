@@ -13,7 +13,7 @@ public class ServerConnector{
 
     private String resourceUrl;
 
-    public ServerConnector(String resourceUrl)
+    ServerConnector(String resourceUrl)
     {
         this.resourceUrl = resourceUrl;
     }
