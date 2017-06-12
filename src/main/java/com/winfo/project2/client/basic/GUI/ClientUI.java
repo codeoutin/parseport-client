@@ -6,7 +6,11 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.UI;
+import com.vaadin.ui.renderers.ButtonRenderer;
+import com.winfo.project2.client.basic.connection.ServerConnector;
+import com.winfo.project2.client.basic.data.Entity;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window
@@ -200,6 +204,34 @@ public class ClientUI extends UI {
         uploadedUI.uploadsButton.addClickListener(e -> {
             setContent(uploadedUI);
         });
+
+/*
+        ServerConnector server = new ServerConnector("http://193.196.143.149:9090");
+        //create a table (grid) with Entities
+        uploadedUI.dataGrid.setItems("entitylist");
+        //add delete button(s)
+        uploadedUI.dataGrid.addColumn(entity -> "Delete",
+                new ButtonRenderer<>(clickEvent -> {
+                    server.deleteEntityByEid("/entities", clickEvent.getItem().getEid());
+                    entityList.remove(clickEvent.getItem());
+                    uploadedUI.dataGrid.setItems("entityList");
+                }));
+        uploadedUI.dataGrid.setWidth("100%");
+*/
+
+    /*    Button button = new Button("Save me");
+        button.addClickListener(e -> {
+            //create new entity object
+            Entity en = new Entity(datasource.getValue(), backlink.getValue(), classification.getValue(), Integer.valueOf(loadedAt.getValue()), completeText.getValue());
+            //show notification
+//            Notification.show("Data saved",
+//                    "Input saved in datebase!",
+//                    Notification.Type.HUMANIZED_MESSAGE);
+            //create json out of new object
+            String newEntityJson = gson.toJson(en);
+            //post json through serverconnector
+            server.postJSON("/entities", newEntityJson);
+        });*/
 
         setContent(mainUI);
     }
