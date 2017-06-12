@@ -3,8 +3,11 @@ package com.winfo.project2.client.basic.GUI;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
-public class AboutUI extends MainUI{
-    public AboutUI(){
+/**
+ * Created by patrick on 13.06.17.
+ */
+public class HomepageUI {
+    public HomepageUI() {
     }
 
     public VerticalLayout getLayout() {
@@ -14,10 +17,8 @@ public class AboutUI extends MainUI{
         infoLabel.setStyleName("p");
         VerticalLayout vertical = new VerticalLayout ();
 
-        headerLabel.setValue("About ParsePort");
-        infoLabel.setValue("ParsePort is a company which started in 2017 as a group of ten students from the" +
-                " \"University of Applied Sciences\" in Stuttgart. " +
-                "All of them are studying Business and Information Systems Engineering.");
+        headerLabel.setValue("ParsePort");
+        infoLabel.setValue("Edit me, i'll wait at HomepageUI::21");
         infoLabel.setWidth("70%");
 
         vertical.addComponents(headerLabel, infoLabel);
