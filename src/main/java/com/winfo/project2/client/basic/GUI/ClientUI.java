@@ -25,7 +25,7 @@ public class ClientUI extends UI {
         final AboutUI aboutUI = new AboutUI();
         final ContactUI contactUI = new ContactUI();
         final UploadUI uploadUI = new UploadUI();
-        final UploadedUI uploadedUI = new UploadedUI();
+        final ImpressumUI impressumUI = new ImpressumUI();
 
 
         //Click Listener for navigation between the pages
@@ -49,8 +49,8 @@ public class ClientUI extends UI {
             setContent(uploadUI);
         });
 
-        mainUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        mainUI.impressumButton.addClickListener(e -> {
+            setContent(impressumUI);
         });
 
         uploadUI.homepageButton.addClickListener(e -> {
@@ -73,8 +73,8 @@ public class ClientUI extends UI {
             setContent(uploadUI);
         });
 
-        uploadUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        uploadUI.impressumButton.addClickListener(e -> {
+            setContent(impressumUI);
         });
 
         aboutUI.homepageButton.addClickListener(e -> {
@@ -97,8 +97,8 @@ public class ClientUI extends UI {
             setContent(uploadUI);
         });
 
-        aboutUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        aboutUI.impressumButton.addClickListener(e -> {
+            setContent(impressumUI);
         });
 
         settingsUI.homepageButton.addClickListener(e -> {
@@ -121,36 +121,12 @@ public class ClientUI extends UI {
             setContent(uploadUI);
         });
 
-        settingsUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        settingsUI.impressumButton.addClickListener(e -> {
+            setContent(impressumUI);
         });
 
-        settingsUI.saveButton.addClickListener(e -> {
-            settingsUI.saveLabel.setVisible(true);
-        });
-
-        contactUI.homepageButton.addClickListener(e -> {
-            setContent(mainUI);
-        });
-
-        contactUI.settingsButton.addClickListener(e -> {
-            setContent(settingsUI);
-        });
-
-        contactUI.aboutbutton.addClickListener(e -> {
-            setContent(aboutUI);
-        });
-
-        contactUI.contactButton.addClickListener(e -> {
-            setContent(contactUI);
-        });
-
-        contactUI.uploadButton.addClickListener(e -> {
-            setContent(uploadUI);
-        });
-
-        contactUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        settingsUI.safeButton.addClickListener(e -> {
+            settingsUI.safeLabel.setVisible(true);
         });
 
         contactUI.homepageButton.addClickListener(e -> {
@@ -173,32 +149,8 @@ public class ClientUI extends UI {
             setContent(uploadUI);
         });
 
-        contactUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
-        });
-
-        uploadedUI.homepageButton.addClickListener(e -> {
-            setContent(mainUI);
-        });
-
-        uploadedUI.settingsButton.addClickListener(e -> {
-            setContent(settingsUI);
-        });
-
-        uploadedUI.aboutbutton.addClickListener(e -> {
-            setContent(aboutUI);
-        });
-
-        uploadedUI.contactButton.addClickListener(e -> {
-            setContent(contactUI);
-        });
-
-        uploadedUI.uploadButton.addClickListener(e -> {
-            setContent(uploadUI);
-        });
-
-        uploadedUI.uploadsButton.addClickListener(e -> {
-            setContent(uploadedUI);
+        contactUI.impressumButton.addClickListener(e -> {
+            setContent(impressumUI);
         });
 
         setContent(mainUI);

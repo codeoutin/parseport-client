@@ -11,7 +11,9 @@
     <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
      <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
       <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
-       <vaadin-image source="C:/Users/Thomas/Dropbox/Projekt SoSe17/User Interface/Logoentwürfe/ParsePortLogo.png" width="203px" height="100px" alt="" _id="parsePortLogo"></vaadin-image>
+       <vaadin-label style-name="logo" plain-text _id="parsePortLabel">
+         ParsePort 
+       </vaadin-label>
        <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
          Menu 
        </vaadin-button>
@@ -32,7 +34,7 @@
           About 
         </vaadin-button>
         <vaadin-button icon="fonticon://Vaadin-Icons/e6e1" plain-text _id="uploadsButton">
-          Show all Data 
+          Uploads 
         </vaadin-button>
         <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
           Settings 
@@ -48,6 +50,9 @@
        <vaadin-css-layout :middle :right>
         <vaadin-button plain-text _id="contactButton">
           Contact 
+        </vaadin-button>
+        <vaadin-button plain-text _id="impressumButton">
+          Impressum 
         </vaadin-button>
        </vaadin-css-layout>
       </vaadin-horizontal-layout>

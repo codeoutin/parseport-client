@@ -5,9 +5,10 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.CssLayout;
+import com.vaadin.ui.Label;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.HorizontalLayout;
-import com.vaadin.ui.Image;
+import com.vaadin.ui.CustomComponent;
 
 
 /**
@@ -23,7 +24,7 @@ import com.vaadin.ui.Image;
 @SuppressWarnings("serial")
 public class MainUI extends VerticalLayout {
     protected CssLayout sideLayout;
-    protected Image parsePortLogo;
+    protected Label parsePortLabel;
     protected Button menuButton;
     protected CssLayout navigationlayout;
     protected Button homepageButton;
@@ -35,6 +36,7 @@ public class MainUI extends VerticalLayout {
     protected CssLayout mainContent;
     protected HorizontalLayout footerlayout;
     protected Button contactButton;
+    protected Button impressumButton;
 
     public MainUI() {
         Design.read(this);
