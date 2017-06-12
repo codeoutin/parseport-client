@@ -6,59 +6,55 @@
   <meta name="vaadin-version" content="8.0.5">
  </head>
  <body>
-  <vaadin-vertical-layout size-full>
-   <vaadin-vertical-layout size-full>
-    <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
-     <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
-      <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
-       <vaadin-label style-name="logo" plain-text _id="parsePortLabel">
-         ParsePort 
-       </vaadin-label>
-       <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
-         Menu 
-       </vaadin-button>
-       <vaadin-css-layout style-name="navigation" width-full _id="navigationlayout">
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7ed" style-name="borderless" responsive width-full plain-text _id="homepageButton">
-          Homepage 
-        </vaadin-button>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e6f5" style-name="borderless" width-full plain-text _id="uploadButton">
-          Upload 
-        </vaadin-button>
-       </vaadin-css-layout>
-      </vaadin-css-layout>
+  <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
+   <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
+    <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
+     <vaadin-label style-name="logo" plain-text _id="parsePortLabel">
+       ParsePort 
+     </vaadin-label>
+     <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
+       Menu 
+     </vaadin-button>
+     <vaadin-css-layout style-name="navigation" width-full _id="navigationlayout">
+      <vaadin-button icon="fonticon://Vaadin-Icons/e7ed" style-name="borderless" responsive width-full plain-text _id="homepageButton">
+        Homepage 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e6f5" style-name="borderless" width-full plain-text _id="uploadButton">
+        Upload 
+      </vaadin-button>
      </vaadin-css-layout>
-     <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
-      <vaadin-horizontal-layout width-full margin _id="headerLayout">
-       <vaadin-css-layout :middle :right>
-        <vaadin-button plain-text _id="aboutbutton">
-          About 
-        </vaadin-button>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e6e1" plain-text _id="uploadsButton">
-          Uploads 
-        </vaadin-button>
-        <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
-          Settings 
-        </vaadin-button>
-       </vaadin-css-layout>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout size-full _id="mainContent" :expand>
-       <vaadin-text-area size-full _id="contactTextarea" :middle :center :expand>
-         Contact: Hochschule für Technik Stuttgart Schellingstr. 24, 70174 Stuttgart Postfach 101452, 70013 Stuttgart Fax +49 (0)711 8926 2666 
-       </vaadin-text-area>
-      </vaadin-horizontal-layout>
-      <vaadin-horizontal-layout _id="footerlayout" :middle :right>
-       <vaadin-css-layout :middle :right>
-        <vaadin-button plain-text _id="contactButton">
-          Contact 
-        </vaadin-button>
-        <vaadin-button plain-text _id="impressumButton">
-          Impressum 
-        </vaadin-button>
-       </vaadin-css-layout>
-      </vaadin-horizontal-layout>
-     </vaadin-vertical-layout>
+    </vaadin-css-layout>
+   </vaadin-css-layout>
+   <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
+    <vaadin-horizontal-layout width-full margin _id="headerLayout">
+     <vaadin-css-layout :middle :right>
+      <vaadin-button plain-text _id="aboutbutton">
+        About 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e6e1" plain-text _id="uploadsButton">
+        Uploads 
+      </vaadin-button>
+      <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
+        Settings 
+      </vaadin-button>
+     </vaadin-css-layout>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout size-full _id="mainContent" :expand>
+     <vaadin-text-area size-full _id="contactTextarea" :middle :center :expand>
+       Contact: Hochschule für Technik Stuttgart Schellingstr. 24, 70174 Stuttgart Postfach 101452, 70013 Stuttgart Fax +49 (0)711 8926 2666 
+     </vaadin-text-area>
+    </vaadin-horizontal-layout>
+    <vaadin-horizontal-layout _id="footerlayout" :middle :right>
+     <vaadin-css-layout :middle :right>
+      <vaadin-button plain-text _id="contactButton">
+        Contact 
+      </vaadin-button>
+      <vaadin-button plain-text _id="impressumButton">
+        Impressum 
+      </vaadin-button>
+     </vaadin-css-layout>
     </vaadin-horizontal-layout>
    </vaadin-vertical-layout>
-  </vaadin-vertical-layout>
+  </vaadin-horizontal-layout>
  </body>
 </html>
