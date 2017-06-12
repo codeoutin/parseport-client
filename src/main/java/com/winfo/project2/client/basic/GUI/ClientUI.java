@@ -7,6 +7,10 @@ import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
+import com.winfo.project2.client.basic.data.Settings;
+import com.winfo.project2.client.basic.helper;
+
+import java.io.IOException;
 
 /**
  * This UI is the application entry point. A UI may either represent a browser window
@@ -36,6 +40,10 @@ public class ClientUI extends UI {
 
         mainUI.settingsButton.addClickListener(e -> {
             setContent(settingsUI);
+            Settings s =  helper.getSettings();
+                settingsUI.ipTextfield.setValue(s.getIpaddress());
+                settingsUI.portTextfield.setValue(s.getPort());
+
         });
 
         mainUI.aboutbutton.addClickListener(e -> {
@@ -53,8 +61,6 @@ public class ClientUI extends UI {
         mainUI.uploadsButton.addClickListener(e -> {
             setContent(dataUI);
         });
-
-
 
         uploadUI.homepageButton.addClickListener(e -> {
             setContent(mainUI);
@@ -130,6 +136,12 @@ public class ClientUI extends UI {
 
         settingsUI.safeButton.addClickListener(e -> {
             settingsUI.safeLabel.setVisible(true);
+            Settings s = null;
+            s = new Settings();
+            s.setIpaddress(settingsUI.ipTextfield.getValue());
+            s.setPort(settingsUI.portTextfield.getValue());
+            helper.setSettings(s);
+
         });
 
         contactUI.homepageButton.addClickListener(e -> {
