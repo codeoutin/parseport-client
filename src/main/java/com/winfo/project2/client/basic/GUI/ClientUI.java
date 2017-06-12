@@ -117,7 +117,7 @@ public class ClientUI extends UI {
             setContent(contactUI);
         });
 
-        settingsUI.uploadButton.addClickListener(e -> {
+        settingsUI.uploaDataButton.addClickListener(e -> {
             setContent(uploadUI);
         });
 
