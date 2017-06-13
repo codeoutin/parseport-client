@@ -5,6 +5,10 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.*;
 import com.vaadin.ui.declarative.Design;
+import com.winfo.project2.client.basic.connection.ServerConnector;
+import com.winfo.project2.client.basic.data.Settings;
+import com.winfo.project2.client.basic.helper;
+import com.winfo.project2.client.plugins.WebsiteParser;
 
 /**
  * Created by patrick on 13.06.17.
@@ -24,6 +28,7 @@ public class UploadUI extends MainUI {
 
         headerLabel.setValue("Upload");
 
+        Settings settings = helper.getSettings();
         //input form
         FormLayout form = new FormLayout();
 
@@ -43,17 +48,18 @@ public class UploadUI extends MainUI {
         form.addComponent(button);
         //Button click
         button.addClickListener( e -> {
-            //create new entity object
-            ///////////////////////////////////Entity en = new Entity(datasource.getValue(), backlink.getValue(), classification.getValue(), Integer.valueOf(loadedAt.getValue()), completeText.getValue());
+
+            //create new entity object from parsed website
+            WebsiteParser websiteParser = new WebsiteParser(path.getValue());
 
             //create json out of new object
-            ///////////////////////////////////String newEntityJson = gson.toJson(en);
-            //post json through serverconnector
-            ///////////////////////////////////server.postJSON("/entities", newEntityJson);
+            String json = helper.objectToJson(websiteParser.parse());
 
-            //refresh page (remove if possible!!) > refresh grid like above at the delete method > problem: form is still filled with data!
-            ////////////////////////////////////////Page.getCurrent().reload();
-            vertical.addComponent(new Label("(not really) saved"));
+            //post json through serverconnector
+            ServerConnector serverConnector = new ServerConnector("http://"+settings.getIpaddress()+":"+settings.getPort());
+            serverConnector.postJSON("/entities", json);
+            
+            vertical.addComponent(new Label("(no status code) saved"));
         });
 
 

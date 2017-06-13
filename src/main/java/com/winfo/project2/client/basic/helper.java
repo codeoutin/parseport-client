@@ -1,5 +1,7 @@
 package com.winfo.project2.client.basic;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.winfo.project2.client.basic.data.Settings;
 
 import java.io.*;
@@ -50,6 +52,17 @@ public class helper {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static String objectToJson(Object object) {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            String jsonInString = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object);
+            return jsonInString;
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+            return "";
         }
     }
 }
