@@ -17,6 +17,8 @@ import com.winfo.project2.client.basic.helper;
  * Created by patrick on 13.06.17.
  */
 public class SettingsUI extends MainUI {
+    public static final String VIEW_NAME = "settings";
+
     public SettingsUI() {
     }
 

@@ -4,6 +4,8 @@ import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
 public class AboutUI extends MainUI{
+    public static final String VIEW_NAME = "about";
+
     public AboutUI(){
     }
 

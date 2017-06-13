@@ -16,6 +16,8 @@ import java.util.List;
  * Created by patrick on 13.06.17.
  */
 public class DataUI extends MainUI {
+    public static final String VIEW_NAME = "data";
+
     public DataUI() {
     }
 

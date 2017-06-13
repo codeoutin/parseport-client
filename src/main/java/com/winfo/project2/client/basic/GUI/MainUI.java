@@ -32,7 +32,6 @@ public class MainUI extends HorizontalLayout {
     protected Button dataButton;
     protected Button settingsButton;
     protected CssLayout mainContent;
-    protected Label infoLabel;
     protected HorizontalLayout footerlayout;
     protected Button contactButton;
 

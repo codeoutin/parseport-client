@@ -7,6 +7,8 @@ import com.vaadin.ui.*;
  * Created by patrick on 13.06.17.
  */
 public class ContactUI extends MainUI {
+    public static final String VIEW_NAME = "contact";
+
     public ContactUI() {
     }
 

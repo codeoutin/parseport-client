@@ -10,11 +10,14 @@ import com.vaadin.ui.declarative.Design;
  * Created by patrick on 13.06.17.
  */
 public class UploadUI extends MainUI {
+    public static final String VIEW_NAME = "upload";
+
     public UploadUI() {
 
     }
 
     public VerticalLayout getLayout () {
+
         Label headerLabel = new Label();
         headerLabel.setStyleName("h1");
         VerticalLayout vertical = new VerticalLayout ();
