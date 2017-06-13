@@ -1,6 +1,7 @@
 package com.winfo.project2.client.basic.GUI;
 
 import com.vaadin.server.Page;
+import com.vaadin.ui.ProgressBar;
 import com.vaadin.ui.UI;
 
 /**
