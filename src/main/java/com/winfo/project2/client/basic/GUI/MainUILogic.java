@@ -12,9 +12,7 @@ public class MainUILogic extends MainUI {
 
 
         homepageButton.addClickListener(e -> {
-            //scheiße aber geht
-            //Page.getCurrent().reload();
-            System.out.println("homepage");
+
 
             //ClientUI.setCurrent(UI.getCurrent());
             //remove und add geht hier nicht
