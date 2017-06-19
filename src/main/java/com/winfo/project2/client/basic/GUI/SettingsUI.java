@@ -34,21 +34,24 @@ public class SettingsUI extends MainUI {
 
         ip.setCaption("IP-address");
         port.setCaption("Port");
+
+        //get settings
+        Settings settings = helper.getSettings();
+        ip.setValue(settings.getIpaddress());
+        port.setValue(settings.getPort());
+
         saveButton.addClickListener(e -> {
-            //kevin mach mal fertig ;) >> setSettings und dann ip.getValue() und port.getValue()
-            //helper.setSettings().??;
-            vertical.addComponent(new Label("Settings saved!"));
+            //set and save  settings
+            settings.setIpaddress(ip.getValue());
+            settings.setPort(port.getValue());
+            if(helper.setSettings(settings)){
+                vertical.addComponent(new Label("Settings saved!"));
+            }
+            else {
+                vertical.addComponent(new Label("error! Settings not saved!"));
+            }
         });
-
-        //get Settings
-        ip.setValue(helper.getSettings().getIpaddress());
-        port.setValue(helper.getSettings().getPort());
-
-
         vertical.addComponents(headerLabel, ip, port, saveButton);
-
-//        mainContent.removeAllComponents();
-//        mainContent.addComponents(vertical);
 
         return vertical;
     }

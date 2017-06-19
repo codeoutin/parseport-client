@@ -21,12 +21,10 @@ public class HomepageUI {
         Label headerLabel = new Label();
         headerLabel.setStyleName("h1");
         Label infoLabel = new Label();
-        infoLabel.setStyleName("p");
         VerticalLayout vertical = new VerticalLayout ();
 
         headerLabel.setValue("ParsePort");
-        infoLabel.setValue("Edit me, i'll wait at HomepageUI::21");
-        infoLabel.setWidth("70%");
+
 
 
 // Find the application directory

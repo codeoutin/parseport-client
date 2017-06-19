@@ -32,34 +32,52 @@ public class UploadUI extends MainUI {
         //input form
         FormLayout form = new FormLayout();
 
-        TextField fileType = new TextField("File Type");
+        ComboBox<String> fileTypeComboBox= new ComboBox<>("File Type");
+        fileTypeComboBox.setItems("Word Document", "HTML Document", "PDF Document");
+        fileTypeComboBox.setRequiredIndicatorVisible(true);
+        fileTypeComboBox.setIcon(FontAwesome.SITEMAP);
 
-        fileType.setRequiredIndicatorVisible(true);
-        fileType.setIcon(FontAwesome.SITEMAP);
+        //TextField fileType = new TextField("File Type");
+        //fileType.setRequiredIndicatorVisible(true);
+        //fileType.setIcon(FontAwesome.SITEMAP);
 
         TextField path = new TextField("Path");
         path.setIcon(FontAwesome.EXTERNAL_LINK);
         path.setRequiredIndicatorVisible(true);
 
 
-        form.addComponents(fileType, path);
+        form.addComponents(fileTypeComboBox, path);
 
         Button button = new Button("Save me");
         form.addComponent(button);
         //Button click
         button.addClickListener( e -> {
+            final int[] status = new int[1];
+            new Thread(() -> {
+                //create new entity object from parsed website
+                WebsiteParser websiteParser = new WebsiteParser(path.getValue());
 
-            //create new entity object from parsed website
-            WebsiteParser websiteParser = new WebsiteParser(path.getValue());
+                //create json out of new object
+                String json = helper.objectToJson(websiteParser.parse());
 
-            //create json out of new object
-            String json = helper.objectToJson(websiteParser.parse());
+                //post json through serverconnector
+                ServerConnector serverConnector = new ServerConnector("http://"+settings.getIpaddress()+":"+settings.getPort());
 
-            //post json through serverconnector
-            ServerConnector serverConnector = new ServerConnector("http://"+settings.getIpaddress()+":"+settings.getPort());
-            serverConnector.postJSON("/entities", json);
-            
-            vertical.addComponent(new Label("(no status code) saved"));
+                status[0] = serverConnector.postJSON("/entities", json);
+
+            }).start();
+            try {
+                Thread.sleep(3000);
+
+                if(status[0] == 201){
+                    vertical.addComponent(new Label(status[0] +" saved"));
+                }
+                else{
+                    vertical.addComponent(new Label("error"));
+                }
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
         });
 
 
