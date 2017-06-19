@@ -5,8 +5,8 @@ import com.vaadin.annotations.DesignRoot;
 import com.vaadin.ui.declarative.Design;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.CssLayout;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Image;
 
 
 /**
@@ -22,7 +22,7 @@ import com.vaadin.ui.Button;
 @SuppressWarnings("serial")
 public class MainUI extends HorizontalLayout {
     protected CssLayout sideLayout;
-    protected Label parsePortLabel;
+    protected Image logo;
     protected Button menuButton;
     protected CssLayout navigationlayout;
     protected Button homepageButton;

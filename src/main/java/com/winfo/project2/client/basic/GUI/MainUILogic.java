@@ -1,8 +1,12 @@
 package com.winfo.project2.client.basic.GUI;
 
+import com.vaadin.server.FileResource;
 import com.vaadin.server.Page;
+import com.vaadin.server.VaadinService;
 import com.vaadin.ui.ProgressBar;
 import com.vaadin.ui.UI;
+
+import java.io.File;
 
 /**
  * Created by patrick on 13.06.17.
@@ -20,6 +24,15 @@ public class MainUILogic extends MainUI {
             mainContent.removeAllComponents();
             mainContent.addComponent(new HomepageUI().getLayout());
         });
+
+        // Find the application directory
+        String basepath = VaadinService.getCurrent()
+                .getBaseDirectory().getAbsolutePath();
+
+        // Image as a file resource
+        FileResource resource = new FileResource(new File(basepath+ "Images/ParsePortLogo.png"));
+
+        logo.setSource( resource );
 
         uploadButton.addClickListener(e -> {
             mainContent.removeAllComponents();
