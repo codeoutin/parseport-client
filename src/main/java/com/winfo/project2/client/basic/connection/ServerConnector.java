@@ -1,8 +1,6 @@
 package com.winfo.project2.client.basic.connection;
 
-import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
-import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.api.client.*;
 import org.json.JSONArray;
 
 
@@ -36,8 +34,8 @@ public class ServerConnector{
         return null;
     }
 
-    public void postJSON(String path, String input) {
-        try {
+    public int postJSON(String path, String input) {
+
             Client client = Client.create();
 
             WebResource webResource = client.resource(resourceUrl + path);
@@ -45,10 +43,7 @@ public class ServerConnector{
             // POST method
             ClientResponse response = webResource.accept("application/json")
                     .type("application/json").post(ClientResponse.class, input);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            return response.getStatus();
     }
 
     public void deleteEntityByEid(String path, String eId) {
