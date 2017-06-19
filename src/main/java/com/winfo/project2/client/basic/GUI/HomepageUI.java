@@ -32,7 +32,7 @@ public class HomepageUI {
                 .getBaseDirectory().getAbsolutePath();
 
 // Image as a file resource
-        FileResource resource = new FileResource(new File(basepath+ "Images/ParsePortLogo.png"));
+        FileResource resource = new FileResource(new File(basepath+ "Images/HomepageImage.png"));
 
 /*"C:/Users/laura/Documents/parseportclient/src/main/resources/Images/ParsePortLogo.png"));
 */
