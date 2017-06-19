@@ -48,18 +48,32 @@ public class UploadUI extends MainUI {
         form.addComponent(button);
         //Button click
         button.addClickListener( e -> {
+            final int[] status = new int[1];
+            new Thread(() -> {
+                //create new entity object from parsed website
+                WebsiteParser websiteParser = new WebsiteParser(path.getValue());
 
-            //create new entity object from parsed website
-            WebsiteParser websiteParser = new WebsiteParser(path.getValue());
+                //create json out of new object
+                String json = helper.objectToJson(websiteParser.parse());
 
-            //create json out of new object
-            String json = helper.objectToJson(websiteParser.parse());
+                //post json through serverconnector
+                ServerConnector serverConnector = new ServerConnector("http://"+settings.getIpaddress()+":"+settings.getPort());
 
-            //post json through serverconnector
-            ServerConnector serverConnector = new ServerConnector("http://"+settings.getIpaddress()+":"+settings.getPort());
-            serverConnector.postJSON("/entities", json);
-            
-            vertical.addComponent(new Label("(no status code) saved"));
+                status[0] = serverConnector.postJSON("/entities", json);
+
+            }).start();
+            try {
+                Thread.sleep(3000);
+
+                if(status[0] == 201){
+                    vertical.addComponent(new Label(status[0] +" saved"));
+                }
+                else{
+                    vertical.addComponent(new Label("error"));
+                }
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
         });
 
 
