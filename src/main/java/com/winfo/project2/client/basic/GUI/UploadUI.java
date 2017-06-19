@@ -44,6 +44,7 @@ public class UploadUI extends MainUI {
         TextField path = new TextField("Path");
         path.setIcon(FontAwesome.EXTERNAL_LINK);
         path.setRequiredIndicatorVisible(true);
+        Label statusLabel = new Label();
 
 
         form.addComponents(fileTypeComboBox, path);
@@ -70,17 +71,16 @@ public class UploadUI extends MainUI {
                 Thread.sleep(3000);
 
                 if(status[0] == 201){
-                    vertical.addComponent(new Label(status[0] +" saved"));
+                    statusLabel.setValue(status[0] +" saved");
                 }
                 else{
-                    vertical.addComponent(new Label("error"));
+                    statusLabel.setValue("error");
                 }
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
         });
-
-
+        form.addComponent(statusLabel);
         vertical.addComponents(headerLabel, form);
 
 //        mainContent.removeAllComponents();
