@@ -30,14 +30,14 @@ public class HomepageUI {
 
 
 // Find the application directory
-        String basepath = VaadinService.getCurrent().getBaseDirectory().getPath();
-                /*VaadinService.getCurrent()
-                .getBaseDirectory().getAbsolutePath();*/
+        String basepath = VaadinService.getCurrent()
+                .getBaseDirectory().getAbsolutePath();
 
 // Image as a file resource
-        FileResource resource = new FileResource(new File("C:/Users/laura/Documents/parseportclient/src/main/resources/Images/ParsePortLogo.png"));
+        FileResource resource = new FileResource(new File(basepath+ "parseportclient/src/main/resources/Images/ParsePortLogo.png"));
 
-
+/*"C:/Users/laura/Documents/parseportclient/src/main/resources/Images/ParsePortLogo.png"));
+*/
 // Show the image in the application
 
         Image image = new Image("",resource);
