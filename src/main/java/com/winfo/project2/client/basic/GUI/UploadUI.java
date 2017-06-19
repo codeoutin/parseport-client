@@ -32,17 +32,21 @@ public class UploadUI extends MainUI {
         //input form
         FormLayout form = new FormLayout();
 
-        TextField fileType = new TextField("File Type");
+        ComboBox<String> fileTypeComboBox= new ComboBox<>("File Type");
+        fileTypeComboBox.setItems("Word Document", "HTML Document", "PDF Document");
+        fileTypeComboBox.setRequiredIndicatorVisible(true);
+        fileTypeComboBox.setIcon(FontAwesome.SITEMAP);
 
-        fileType.setRequiredIndicatorVisible(true);
-        fileType.setIcon(FontAwesome.SITEMAP);
+        //TextField fileType = new TextField("File Type");
+        //fileType.setRequiredIndicatorVisible(true);
+        //fileType.setIcon(FontAwesome.SITEMAP);
 
         TextField path = new TextField("Path");
         path.setIcon(FontAwesome.EXTERNAL_LINK);
         path.setRequiredIndicatorVisible(true);
 
 
-        form.addComponents(fileType, path);
+        form.addComponents(fileTypeComboBox, path);
 
         Button button = new Button("Save me");
         form.addComponent(button);
