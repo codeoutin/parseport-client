@@ -33,7 +33,7 @@ public class MainUILogic extends MainUI {
         FileResource resource = new FileResource(new File(basepath+ "Images/ParsePortLogo.png"));
 
         logo.setSource( resource );
-
+        logo.setHeight("7%");
         uploadButton.addClickListener(e -> {
             mainContent.removeAllComponents();
             mainContent.addComponent(new UploadUI().getLayout());
