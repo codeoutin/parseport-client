@@ -1,6 +1,8 @@
 package com.winfo.project2.client.basic.data;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -22,6 +24,8 @@ public class Entity {
     {
         this.sourceProperties = new ArrayList<>();
         this.syntheticProperties = new ArrayList<>();
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        this.loadedAt = timestamp.getTime();
     }
 
     public Entity(String eid, String datasource, String backlink, String classification, long loadedAt, String completeText)

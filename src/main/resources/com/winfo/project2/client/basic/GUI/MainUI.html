@@ -1,60 +1,51 @@
 <!doctype html>
 <html>
- <head>
-  <meta charset="UTF-8">
-  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
-  <meta name="vaadin-version" content="8.0.5">
- </head>
- <body>
-  <vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
-   <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
-    <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
-     <vaadin-label style-name="logo" plain-text _id="parsePortLabel">
-       ParsePort 
-     </vaadin-label>
-     <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
-       Menu 
-     </vaadin-button>
-     <vaadin-css-layout style-name="navigation" width-full _id="navigationlayout">
-      <vaadin-button icon="fonticon://Vaadin-Icons/e7ed" style-name="borderless" responsive width-full plain-text _id="homepageButton">
-        Homepage 
-      </vaadin-button>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e6f5" style-name="borderless" width-full plain-text _id="uploadButton">
-        Upload 
-      </vaadin-button>
-     </vaadin-css-layout>
+<head>
+    <meta charset="UTF-8">
+    <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;valo&quot;}">
+    <meta name="vaadin-version" content="8.0.5">
+</head>
+<body>
+<vaadin-horizontal-layout style-name="app-shell" spacing="false" responsive size-full>
+    <vaadin-css-layout style-name="navigation-bar-container" width="200px" height-full>
+        <vaadin-css-layout style-name="navigation-bar" size-full _id="sideLayout">
+            <vaadin-image alt="" _id="logo"></vaadin-image>
+            <vaadin-button icon="fonticon://Vaadin-Icons/e7b3" style-name="menu borderless" plain-text _id="menuButton">
+                Menu
+            </vaadin-button>
+            <vaadin-css-layout style-name="navigation" width-full _id="navigationlayout">
+                <vaadin-button icon="fonticon://Vaadin-Icons/e7ed" style-name="borderless" responsive width-full plain-text _id="homepageButton">
+                    Homepage
+                </vaadin-button>
+                <vaadin-button icon="fonticon://Vaadin-Icons/e6f5" style-name="borderless" width-full plain-text _id="uploadButton">
+                    Upload
+                </vaadin-button>
+            </vaadin-css-layout>
+        </vaadin-css-layout>
     </vaadin-css-layout>
-   </vaadin-css-layout>
-   <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
-    <vaadin-horizontal-layout width-full margin _id="headerLayout">
-     <vaadin-css-layout :middle :right>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e71c" plain-text _id="aboutbutton">
-        About 
-      </vaadin-button>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e6e1" plain-text _id="uploadsButton">
-        Data 
-      </vaadin-button>
-      <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
-        Settings 
-      </vaadin-button>
-     </vaadin-css-layout>
-    </vaadin-horizontal-layout>
-    <vaadin-css-layout size-full _id="mainContent" :expand>
-     <vaadin-label plain-text>
-       ...Insert Picture ... 
-     </vaadin-label>
-    </vaadin-css-layout>
-    <vaadin-horizontal-layout _id="footerlayout" :middle :right>
-     <vaadin-css-layout :middle :right>
-      <vaadin-button plain-text _id="contactButton">
-        Contact 
-      </vaadin-button>
-      <vaadin-button plain-text _id="impressumButton">
-        Impressum 
-      </vaadin-button>
-     </vaadin-css-layout>
-    </vaadin-horizontal-layout>
-   </vaadin-vertical-layout>
-  </vaadin-horizontal-layout>
- </body>
+    <vaadin-vertical-layout style-name="content-container" spacing="false" size-full margin="false" :expand>
+        <vaadin-horizontal-layout width-full margin _id="headerLayout">
+            <vaadin-css-layout :middle :right>
+                <vaadin-button icon="fonticon://Vaadin-Icons/e71c" plain-text _id="aboutbutton">
+                    About
+                </vaadin-button>
+                <vaadin-button icon="fonticon://Vaadin-Icons/e7a5" plain-text _id="dataButton">
+                    Data
+                </vaadin-button>
+                <vaadin-button icon="fonticon://Vaadin-Icons/e7d3" plain-text _id="settingsButton">
+                    Settings
+                </vaadin-button>
+            </vaadin-css-layout>
+        </vaadin-horizontal-layout>
+        <vaadin-css-layout size-full _id="mainContent" :expand></vaadin-css-layout>
+        <vaadin-horizontal-layout _id="footerlayout" :middle :right>
+            <vaadin-css-layout responsive :middle :right>
+                <vaadin-button icon="fonticon://Vaadin-Icons/e75a" plain-text _id="contactButton">
+                    Contact
+                </vaadin-button>
+            </vaadin-css-layout>
+        </vaadin-horizontal-layout>
+    </vaadin-vertical-layout>
+</vaadin-horizontal-layout>
+</body>
 </html>
