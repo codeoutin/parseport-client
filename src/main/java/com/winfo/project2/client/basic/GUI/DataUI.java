@@ -60,6 +60,9 @@ public class DataUI extends MainUI{
                     grid.setEnabled(false);
                 }
                 grid.setWidth("100%");
+                grid.setHeight("90%");
+                grid.getColumn("completeText").setWidth(500);
+                grid.getColumn("backlink").setWidth(300);
 
             } catch (ClientHandlerException e) {
                 new Notification("Timeout: " + e.getMessage());
