@@ -32,14 +32,11 @@ public class UploadUI extends MainUI {
         //input form
         FormLayout form = new FormLayout();
 
-        ComboBox<String> fileTypeComboBox= new ComboBox<>("File Type");
-        fileTypeComboBox.setItems("Word Document", "HTML Document", "PDF Document");
+        ComboBox<String> fileTypeComboBox= new ComboBox<>("Filetype");
+        fileTypeComboBox.setItems("HTML Document","Word Document", "PDF Document");
         fileTypeComboBox.setRequiredIndicatorVisible(true);
         fileTypeComboBox.setIcon(FontAwesome.SITEMAP);
-
-        //TextField fileType = new TextField("File Type");
-        //fileType.setRequiredIndicatorVisible(true);
-        //fileType.setIcon(FontAwesome.SITEMAP);
+        fileTypeComboBox.setValue("HTML Document");
 
         TextField path = new TextField("Path");
         path.setIcon(FontAwesome.EXTERNAL_LINK);
@@ -71,11 +68,12 @@ public class UploadUI extends MainUI {
                 Thread.sleep(3000);
 
                 if(status[0] == 201){
-                    statusLabel.setValue(status[0] +" saved");
+                    statusLabel.setValue("Successfully parsed and saved.");
                 }
                 else{
-                    statusLabel.setValue("error");
+                    statusLabel.setValue("Upload Timeout. No Data was saved.");
                 }
+                path.setValue(" ");
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }

@@ -25,27 +25,19 @@ public class HomepageUI {
 
         headerLabel.setValue("ParsePort");
 
-
-
 // Find the application directory
         String basepath = VaadinService.getCurrent()
                 .getBaseDirectory().getAbsolutePath();
 
 // Image as a file resource
-        FileResource resource = new FileResource(new File(basepath+ "Images/HomepageImage.png"));
+        FileResource resource = new FileResource(new File(basepath+ "Images/ImageHomepage.png"));
 
 /*"C:/Users/laura/Documents/parseportclient/src/main/resources/Images/ParsePortLogo.png"));
 */
 // Show the image in the application
 
         Image image = new Image("",resource);
-        image.setWidth("40%");
-/*
-        Label loremIpsum = new Label();
-        loremIpsum.setValue("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.");
-        loremIpsum.setWidth("70%");
-
-*/
+        image.setWidth("45%");
 
         vertical.addComponents(headerLabel, infoLabel, image);
 
